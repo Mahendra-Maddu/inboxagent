@@ -1,0 +1,21 @@
+{
+  "preferences": [
+    {
+      "id": "cc_legal_priya",
+      "text": "Always CC priya@paperjet.io on mail from Hartwell & Cho lawyers",
+      "source_message": "m015",
+      "type": "cc_correspondent",
+      "match_from_domain": "hartwellcho.com",
+      "cc": [
+        "priya@paperjet.io"
+      ]
+    },
+    {
+      "id": "no_meetings_before_11",
+      "text": "Do not accept meetings before 11:00am; offer 11:00am or later",
+      "source_message": "m041",
+      "type": "scheduling",
+      "earliest_hour": 11
+    }
+  ]
+}

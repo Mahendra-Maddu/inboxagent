@@ -1,0 +1,12 @@
+{
+  "in_reply_to": "m018",
+  "to": "m.cho@hartwellcho.com",
+  "cc": [
+    "priya@paperjet.io"
+  ],
+  "subject": "Re: PaperJet -- SAFE amendment for signature",
+  "body": "Marcus / team -\n\nThanks, I've received this and will review. Looping Priya per our standing process.\n\n- Sam",
+  "cited": [],
+  "held_for_approval": true,
+  "why_gate": "Legal correspondence; human must approve before send"
+}
