@@ -49,5 +49,6 @@ A single Python pipeline, no framework. Messages are loaded from `inbox.json`. A
 | X2 | Follow-up tracking | B | unanswered sent mail, with a drafted chase |
 | X3 | Morning digest | B | what needs Sam / what can wait / what was archived |
 | X4 | Preference-aware scheduling | C | m043 at 09:00 is held, with 11:00 alternatives |
+| X5 | List spam | A | lists phishing spam (m021, m023, m045), leaves them in place |
 
 The exact command, observable outcome, and evidence for each is in `capabilities.json`. That file is the machine-readable version. This file is for a human. Keep the two in step.
