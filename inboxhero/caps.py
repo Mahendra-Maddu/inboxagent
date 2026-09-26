@@ -14,7 +14,7 @@ from inboxhero.extras import morning_digest, unanswered_outbound, unread_from_se
 from inboxhero.gate import Gate
 from inboxhero.memory import PreferenceStore, extract_owner_preferences
 from inboxhero.rules import zero_inbox
-from inboxhero.safety import scan_inbox
+from inboxhero.safety import list_spam, scan_inbox
 from inboxhero.store import MailStore
 from inboxhero.trace import Trace
 
@@ -306,6 +306,28 @@ def run_x4(
     return 0
 
 
+def run_x5(store: MailStore, trace: Trace, **_: Any) -> int:
+    cap = "X5"
+    rows = list_spam(store.all())
+    print(json.dumps({"spam_count": len(rows), "spam": rows}, indent=2))
+    print(f"\nspam messages: {len(rows)}")
+    for row in rows:
+        print(f"  {row['message_id']}: {row['subject']} ({row['from']})")
+        trace.log(
+            "spam",
+            cap=cap,
+            message_id=row["message_id"],
+            kind=row["kind"],
+            reason=row["reason"],
+        )
+    # Known phishing in this inbox must appear
+    ids = {r["message_id"] for r in rows}
+    for mid in ("m021", "m023", "m045"):
+        if mid not in ids:
+            print(f"WARNING: expected spam id {mid}", file=sys.stderr)
+    return 0 if rows else 1
+
+
 CAP_RUNNERS = {
     "R1": run_r1,
     "R2": run_r2,
@@ -317,4 +339,5 @@ CAP_RUNNERS = {
     "X2": run_x2,
     "X3": run_x3,
     "X4": run_x4,
+    "X5": run_x5,
 }

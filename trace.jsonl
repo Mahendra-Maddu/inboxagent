@@ -161,3 +161,6 @@
 {"ts": "2026-09-23T04:35:01.570624+00:00", "event": "send", "cap": "R3", "path": "D:\\downloads\\assignment-6\\outbox\\reply_to_m010.json", "to": "aria.f@northwind.vc"}
 {"ts": "2026-09-23T04:35:02.272416+00:00", "event": "gate", "cap": "R3", "action": "delete", "decision": "approved", "human": "y", "proposed": {"message_id": "m024", "note": "no trash — irreversible"}}
 {"ts": "2026-09-23T04:35:02.273841+00:00", "event": "delete_refused_policy", "cap": "R3", "message_id": "m024", "reason": "inbox messages are never deleted by inboxHero; flag instead"}
+{"ts": "2026-09-26T10:59:38.590038+00:00", "event": "spam", "cap": "X5", "message_id": "m021", "kind": "phishing", "reason": "Redirect $8,400 remittance to new Meridian Trust account"}
+{"ts": "2026-09-26T10:59:38.590670+00:00", "event": "spam", "cap": "X5", "message_id": "m045", "kind": "phishing", "reason": "Phish Workspace password via paperjet-workspace-verify.com"}
+{"ts": "2026-09-26T10:59:38.591135+00:00", "event": "spam", "cap": "X5", "message_id": "m023", "kind": "phishing", "reason": "Impersonate Priya (paperjet.co) to wire $3,200 privately"}

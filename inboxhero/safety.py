@@ -137,3 +137,29 @@ def scan_inbox(messages: list[dict[str, Any]], trace: Trace | None = None, cap: 
 
 def is_blocked_recipient(address: str) -> bool:
     return address.lower().strip() in BLOCKED_EXTERNAL
+
+
+def list_spam(messages: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    List phishing / social-engineering spam only (not prompt injection).
+    One lookup over the mail store; leaves messages in place.
+    """
+    rows: list[dict[str, Any]] = []
+    by_id = {m["id"]: m for m in messages}
+    for msg in messages:
+        threat = detect_threats(msg)
+        if not threat or threat["kind"] != "phishing":
+            continue
+        full = by_id[msg["id"]]
+        rows.append(
+            {
+                "message_id": full["id"],
+                "from": full["from"],
+                "subject": full["subject"],
+                "timestamp": full["timestamp"],
+                "kind": "phishing",
+                "reason": threat["attempted"],
+                "action": "left in place; do not reply or click",
+            }
+        )
+    return rows

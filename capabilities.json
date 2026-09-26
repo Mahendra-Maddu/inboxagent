@@ -117,6 +117,15 @@
       "command": "python demo.py --cap X4",
       "observable": "Prints the conflict, a draft offering Monday at 11:00 or Tuesday 3:00pm, 'cited: ['m041']', and 'outbox/ writes: 0' because the reply stays behind the gate.",
       "evidence": "trace.jsonl, events tagged cap=X4 (a 'draft' event citing m041 and a 'gate' event with decision dry-run-suppressed)"
+    },
+    {
+      "id": "X5",
+      "name": "List spam",
+      "tier": "A",
+      "claim": "Lists phishing and social-engineering spam in the inbox without deleting or answering them.",
+      "command": "python demo.py --cap X5",
+      "observable": "Prints JSON with spam_count 3 and entries for m021 (fake bank remittance), m023 (Priya impersonation wire request), and m045 (fake Workspace password link). Messages stay in the inbox.",
+      "evidence": "trace.jsonl, events tagged cap=X5 (a 'spam' event per phishing message id)"
     }
   ]
 }

@@ -22,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--cap",
         choices=sorted(CAP_RUNNERS.keys()),
-        help="Run a single capability (R1–R6, X1–X4)",
+        help="Run a single capability (R1–R6, X1–X5)",
     )
     parser.add_argument("--all", action="store_true", help="Run all capabilities in order")
     parser.add_argument(
@@ -58,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
 
     caps = list(CAP_RUNNERS.keys()) if args.all else [args.cap]
     # Stable order
-    order = ["R1", "R2", "R3", "R4", "R5", "R6", "X1", "X2", "X3", "X4"]
+    order = ["R1", "R2", "R3", "R4", "R5", "R6", "X1", "X2", "X3", "X4", "X5"]
     caps = [c for c in order if c in caps]
 
     rc = 0
